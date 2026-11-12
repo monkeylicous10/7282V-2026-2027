@@ -74,7 +74,6 @@ void initialize() {
       {"Boomerang\n\nGo to (0, 24, 45) then come back to (0, 0, 0)", odom_boomerang_example},
       {"Boomerang Pure Pursuit\n\nGo to (0, 24, 45) on the way to (24, 24) then come back to (0, 0, 0)", odom_boomerang_injected_pure_pursuit_example},
       {"Measure Offsets\n\nThis will turn the robot a bunch of times and calculate your offsets for your tracking wheels.", measure_offsets},
-      {"", auton1AR},
   });
 
   // Initialize chassis and auton selector
@@ -264,16 +263,9 @@ void opcontrol() {
     // Put more user control code here!
     
     if (master.get_digital(DIGITAL_L1)) {
-      if (heightLeveler != 7) {
-        heightLeveler += 1;
-      }
-      liftPID.target_set((100 * heightLeveler));
+      liftPID.target_set((700));
     } else if (master.get_digital(DIGITAL_L2)) {
-      if (heightLeveler != 0) {
-        heightLeveler -= 1;
-      }
-      screen_print("TESTING TESTING 1 2 3");
-      liftPID.target_set((100 * heightLeveler));
+      liftPID.target_set((0));
     }
     setlift(liftPID.compute(lift_l.get_position()));
     if (master.get_digital(DIGITAL_R1)) {
