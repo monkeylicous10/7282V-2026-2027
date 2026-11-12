@@ -385,5 +385,9 @@ void toggle(string side, string color) {
 //standard auton sequence. red side.
 void auton1AR() {
   toggle("back", "red");
-  chassis.pid_odom_set(24_in, DRIVE_SPEED, true);
+  chassis.pid_odom_set(6_in, DRIVE_SPEED, true);
+  chassis.pid_turn_set(90_deg, TURN_SPEED); 
+  chassis.pid_odom_set(8_in, DRIVE_SPEED);
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
 }
+
